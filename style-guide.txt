@@ -1,0 +1,20 @@
+Style Guide for Salmon cookies
+
+Highlight {
+  font: font-family: 'Yanone Kaffeesatz', sans-serif;
+  color:
+}
+
+Text {
+  font: Verdana, Geneva, sans-serif
+  color:
+}
+
+Data {
+  font: Georgia, serif
+  color:
+}
+
+Default page background:
+
+Element background:
