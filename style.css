@@ -1,0 +1,32 @@
+body {
+  padding-left: 20px;
+  background-color: #fee9e6;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+h1  {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 300px;
+}
+
+th {
+  height: 35px;
+}
+
+td {
+  padding: 3px;
+}
+
+table, th, td {
+  border: 2px solid;
+  text-align: center;
+  font-family: Georgia, serif;
+}
+
+.total {
+  font-weight: bold;
+}
