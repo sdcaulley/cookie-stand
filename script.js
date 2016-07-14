@@ -90,11 +90,11 @@ var locations = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pea
 function storeInfo(locArray) {
   for (var i = 0; i < locArray.length; i++) {
     locArray[i].cookiesNeeded();
-    document.write("<h2>" +locArray[i].name+ "</h2><table><tr><th scope='col'>Hour</th><th scope='col'>Cookie Sales</th></tr><tr><td>");
+    document.write("<h2>" +locArray[i].name+ "</h2><table><tr><th scope='col'>Hour</th><th scope='col'>Cookie Sales</th></tr>");
     for (var index = 0; index < locArray[i].hours.length; index++) {
       document.write("<tr><td>" +locArray[i].hours[index]+ "</td><td>" +locArray[i].randomCust[index]+ "</td></tr>");
   }
-  document.write("<tr><td>Total</td><td>" +locArray[i].dayTotal+ "</td></tr></table>");
+  document.write("<tr class='total'><td>Total</td><td>" +locArray[i].dayTotal+ "</td></tr></table>");
 }
 }
 storeInfo(locations);
