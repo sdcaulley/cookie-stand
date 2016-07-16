@@ -1,4 +1,4 @@
-//store locations in literal object notation
+// store locations in literal object notation
 var pioneerSquare = {
   name: 'Pioneer Square',
   minCustomer: 17,
@@ -7,11 +7,11 @@ var pioneerSquare = {
   hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
   randomCust: [],
   dayTotal: 0,
-  cookiesNeeded: function() {
+  cookiesNeeded: function () {
     while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)));
-    this.randomCust.push(cookieSales);
-    this.dayTotal += cookieSales;
+      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
+      this.randomCust.push(cookieSales)
+      this.dayTotal += cookieSales
     }
   }
 }
@@ -24,11 +24,11 @@ var portlandAirport = {
   hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
   randomCust: [],
   dayTotal: 0,
-  cookiesNeeded: function() {
+  cookiesNeeded: function () {
     while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)));
-    this.randomCust.push(cookieSales);
-    this.dayTotal += cookieSales;
+      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
+      this.randomCust.push(cookieSales)
+      this.dayTotal += cookieSales
     }
   }
 }
@@ -41,11 +41,11 @@ var washingtonSquare = {
   hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
   randomCust: [],
   dayTotal: 0,
-  cookiesNeeded: function() {
+  cookiesNeeded: function () {
     while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)));
-    this.randomCust.push(cookieSales);
-    this.dayTotal += cookieSales;
+      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
+      this.randomCust.push(cookieSales)
+      this.dayTotal += cookieSales
     }
   }
 }
@@ -58,11 +58,11 @@ var sellwood = {
   hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
   randomCust: [],
   dayTotal: 0,
-  cookiesNeeded: function() {
+  cookiesNeeded: function () {
     while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)));
-    this.randomCust.push(cookieSales);
-    this.dayTotal += cookieSales;
+      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
+      this.randomCust.push(cookieSales)
+      this.dayTotal += cookieSales
     }
   }
 }
@@ -75,26 +75,26 @@ var pearlDistrict = {
   hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
   randomCust: [],
   dayTotal: 0,
-  cookiesNeeded: function() {
+  cookiesNeeded: function () {
     while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)));
-    this.randomCust.push(cookieSales);
-    this.dayTotal += cookieSales;
+      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
+      this.randomCust.push(cookieSales)
+      this.dayTotal += cookieSales
     }
   }
 }
 
-//function to display requested data to page
-var locations = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pearlDistrict];
+// function to display requested data to page
+var locations = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pearlDistrict]
 
-function storeInfo(locArray) {
+function storeInfo (locArray) {
   for (var i = 0; i < locArray.length; i++) {
-    locArray[i].cookiesNeeded();
-    document.write("<h2>" +locArray[i].name+ "</h2><table><tr><th scope='col'>Hour</th><th scope='col'>Cookie Sales</th></tr>");
+    locArray[i].cookiesNeeded()
+    document.write('<h2 class="highlight">' + locArray[i].name + '</h2><table><tr class="text"><th scope="col">Hour</th><th scope="col">Cookie Sales</th></tr>')
     for (var index = 0; index < locArray[i].hours.length; index++) {
-      document.write("<tr><td>" +locArray[i].hours[index]+ "</td><td>" +locArray[i].randomCust[index]+ "</td></tr>");
+      document.write('<tr><td class="text">' + locArray[i].hours[index] + '</td><td class="data">' + locArray[i].randomCust[index] + '</td></tr>')
+    }
+    document.write('<tr class="total"><td>Total</td><td class="data">' + locArray[i].dayTotal + '</td></tr></table>')
   }
-  document.write("<tr class='total'><td>Total</td><td>" +locArray[i].dayTotal+ "</td></tr></table>");
 }
-}
-storeInfo(locations);
+storeInfo(locations)
