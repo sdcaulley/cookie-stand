@@ -1,7 +1,8 @@
 body {
   padding-left: 20px;
-  background-color: #fee9e6;
-  font-family: Verdana, Geneva, sans-serif;
+  background-color: rgba(204, 225, 254, 0.2);
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1em;
 }
 
 h1  {
@@ -22,11 +23,56 @@ td {
 }
 
 table, th, td {
-  border: 2px solid;
+  border: 2px solid #2b4365;
   text-align: center;
-  font-family: Georgia, serif;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 1em;
 }
 
 .total {
   font-weight: bold;
+  color: #fb6437;
+}
+
+.pallette {
+  float: left;
+  width: 20%;
+  height: 50px;
+  margin: 5px;
+  border: 1px solid;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+.dkblue {
+  background-color: #2b4365;
+}
+
+.ltblue {
+  background-color: #cce1fe;
+}
+
+.dkorange {
+  background-color: #fb6437;
+}
+
+.ltorange {
+  background-color: #f9c756;
+}
+
+.highlight {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: #2b4365;
+}
+
+.text {
+  font-family: Verdana, Geneva, sans-serif;
+  color: #fb6437;
+}
+
+.data {
+  font-family: Georgia, serif;
+  color: #f9c756;
+  font-weight: bolder;
 }
