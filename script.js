@@ -90,11 +90,44 @@ var locations = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pea
 function storeInfo (locArray) {
   for (var i = 0; i < locArray.length; i++) {
     locArray[i].cookiesNeeded()
-    document.write('<h2 class="highlight">' + locArray[i].name + '</h2><table><tr class="text"><th scope="col">Hour</th><th scope="col">Cookie Sales</th></tr>')
-    for (var index = 0; index < locArray[i].hours.length; index++) {
-      document.write('<tr><td class="text">' + locArray[i].hours[index] + '</td><td class="data">' + locArray[i].randomCust[index] + '</td></tr>')
+    var newSec = document.createElement('section')
+    var position = document.getElementById('content')
+    position.appendChild(newSec)
+    var newStore = document.createElement('h2')
+    newSec.appendChild(newStore)
+    var newStoreName = document.createTextNode(locArray[i].name)
+    newStore.appendChild(newStoreName)
+    newSec.appendChild(buildTable(locArray[i]))
+  }
+  function buildTable (myArray) {
+    var newTable = document.createElement('table')
+    var header = newTable.createTHead()
+    var rowHead = header.insertRow(0)
+    var cellHead1 = rowHead.insertCell(0)
+    var cellHead2 = rowHead.insertCell(1)
+    var headText1 = document.createTextNode('Hours')
+    var headText2 = document.createTextNode('Cookies')
+    cellHead1.appendChild(headText1)
+    cellHead2.appendChild(headText2)
+    for (var index = 0; index < myArray.hours.length; index++) {
+      var row = newTable.insertRow(myArray.hours[index])
+      newTable.appendChild(row)
+      var cell1 = row.insertCell(0)
+      var cell2 = row.insertCell(1)
+      var cellText1 = document.createTextNode(myArray.hours[index])
+      var cellText2 = document.createTextNode(myArray.randomCust[index])
+      cell1.appendChild(cellText1)
+      cell2.appendChild(cellText2)
     }
-    document.write('<tr class="total"><td>Total</td><td class="data">' + locArray[i].dayTotal + '</td></tr></table>')
+    var rowTotal = newTable.insertRow()
+    var cellTotal1 = rowTotal.insertCell(0)
+    var cellTotal2 = rowTotal.insertCell(1)
+    var totalText1 = document.createTextNode('Total')
+    var TotalText2 = document.createTextNode(locArray[i].dayTotal)
+    cellTotal1.appendChild(totalText1)
+    cellTotal2.appendChild(TotalText2)
+    return newTable
   }
 }
+
 storeInfo(locations)
