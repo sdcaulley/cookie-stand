@@ -16,16 +16,16 @@ function Store (name, minCustomer, maxCustomer, avgCookie) {
   }
 }
 
- // declare store objects
-var pioneerSquare = new Store('Pioneer Square', 17, 88, 5.2, 10, 6)
-var portlandAirport = new Store('Portland Airport', 6, 24, 1.2, 10, 6)
-var washingtonSquare = new Store('Washington Square', 11, 38, 1.9, 10, 6)
-var sellwood = new Store('Sellwood', 20, 48, 3.3, 10, 6)
-var pearlDistrict = new Store('Pearl District', 3, 24, 2.6, 10, 6)
+// declare store objects
+var locations = [
+  new Store('Pioneer Square', 17, 88, 5.2, 10, 6),
+  new Store('Portland Airport', 6, 24, 1.2, 10, 6),
+  new Store('Washington Square', 11, 38, 1.9, 10, 6),
+  new Store('Sellwood', 20, 48, 3.3, 10, 6),
+  new Store('Pearl District', 3, 24, 2.6, 10, 6)
+]
 
 // function to display requested data to page
-var locations = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pearlDistrict]
-
 function storeInfo (locArray) {
   for (var i = 0; i < locArray.length; i++) {
     locArray[i].cookiesNeeded()
