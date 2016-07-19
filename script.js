@@ -1,14 +1,14 @@
-// store locations in literal object notation
-var pioneerSquare = {
-  name: 'Pioneer Square',
-  minCustomer: 17,
-  maxCustomer: 88,
-  avgCookie: 5.2,
-  hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
-  randomCust: [],
-  dayTotal: 0,
-  cookiesNeeded: function () {
-    while (this.randomCust.length < 10) {
+// object constructor for stores
+function Store (name, minCustomer, maxCustomer, avgCookie) {
+  this.name = name
+  this.minCustomer = minCustomer
+  this.maxCustomer = maxCustomer
+  this.avgCookie = avgCookie
+  this.hours = ['10 am', '11 am', '12 am', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm']
+  this.randomCust = []
+  this.dayTotal = 0
+  this.cookiesNeeded = function () {
+    while (this.randomCust.length < this.hours.length) {
       var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
       this.randomCust.push(cookieSales)
       this.dayTotal += cookieSales
@@ -16,73 +16,12 @@ var pioneerSquare = {
   }
 }
 
-var portlandAirport = {
-  name: 'Portland Airport',
-  minCustomer: 6,
-  maxCustomer: 24,
-  avgCookie: 1.2,
-  hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
-  randomCust: [],
-  dayTotal: 0,
-  cookiesNeeded: function () {
-    while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
-      this.randomCust.push(cookieSales)
-      this.dayTotal += cookieSales
-    }
-  }
-}
-
-var washingtonSquare = {
-  name: 'Washington Square',
-  minCustomer: 11,
-  maxCustomer: 38,
-  avgCookie: 1.9,
-  hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
-  randomCust: [],
-  dayTotal: 0,
-  cookiesNeeded: function () {
-    while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
-      this.randomCust.push(cookieSales)
-      this.dayTotal += cookieSales
-    }
-  }
-}
-
-var sellwood = {
-  name: 'Sellwood',
-  minCustomer: 20,
-  maxCustomer: 48,
-  avgCookie: 3.3,
-  hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
-  randomCust: [],
-  dayTotal: 0,
-  cookiesNeeded: function () {
-    while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
-      this.randomCust.push(cookieSales)
-      this.dayTotal += cookieSales
-    }
-  }
-}
-
-var pearlDistrict = {
-  name: 'Pearl District',
-  minCustomer: 3,
-  maxCustomer: 24,
-  avgCookie: 2.6,
-  hours: ['10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm'],
-  randomCust: [],
-  dayTotal: 0,
-  cookiesNeeded: function () {
-    while (this.randomCust.length < 10) {
-      var cookieSales = (Math.ceil(((Math.floor(Math.random() * (this.maxCustomer - this.minCustomer) + this.minCustomer)) * this.avgCookie)))
-      this.randomCust.push(cookieSales)
-      this.dayTotal += cookieSales
-    }
-  }
-}
+ // declare store objects
+var pioneerSquare = new Store('Pioneer Square', 17, 88, 5.2, 10, 6)
+var portlandAirport = new Store('Portland Airport', 6, 24, 1.2, 10, 6)
+var washingtonSquare = new Store('Washington Square', 11, 38, 1.9, 10, 6)
+var sellwood = new Store('Sellwood', 20, 48, 3.3, 10, 6)
+var pearlDistrict = new Store('Pearl District', 3, 24, 2.6, 10, 6)
 
 // function to display requested data to page
 var locations = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pearlDistrict]
