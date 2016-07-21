@@ -76,3 +76,12 @@ function storeInfo (locArray) {
 }
 
 storeInfo(locations)
+
+var form = document.getElementById('store')
+form.onsubmit = function (e) {
+  e.preventDefault()
+  var newStore = new Store(form.storeName.value, form.minCustomer.value, form.maxCustomer.value, form.avgCookie.value)
+  locations.push(newStore)
+  console.log(newStore)
+  storeInfo(locations)
+}
