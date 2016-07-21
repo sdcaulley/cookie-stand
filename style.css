@@ -15,8 +15,8 @@ thead td {
   font-weight: bolder;
 }
 
-tr.nth-of-type(2n + 2) {
-  background-color: #82b5fc;
+tr:nth-of-type(even) {
+  background-color: #2b4365;
 }
 
 td {
