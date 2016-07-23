@@ -42,6 +42,20 @@ function createStoreInfo (locStore) {
   newSec.appendChild(newStore)
   var newStoreName = document.createTextNode(locStore.name)
   newStore.appendChild(newStoreName)
+  var propertyList = document.createElement('ul')
+  var newPropertyMin = document.createElement('li')
+  var newMinCust = document.createTextNode(locStore.minCustomer)
+  newPropertyMin.appendChild(newMinCust)
+  propertyList.appendChild(newPropertyMin)
+  var newPropertyMax = document.createElement('li')
+  var newMaxCust = document.createTextNode(locStore.maxCustomer)
+  newPropertyMax.appendChild(newMaxCust)
+  propertyList.appendChild(newPropertyMax)
+  var newPropertyAvg = document.createElement('li')
+  var newAvgCookie = document.createTextNode(locStore.avgCookie)
+  newPropertyAvg.appendChild(newAvgCookie)
+  propertyList.appendChild(newPropertyAvg)
+  newSec.appendChild(propertyList)
   newSec.appendChild(buildTable(locStore))
 }
 
@@ -89,3 +103,31 @@ form.onsubmit = function (e) {
 }
 
 displayInfo(locations)
+
+// Get the modal
+var modal = document.getElementById('myModal')
+var btn = document.getElementById('myBtn')
+var span = document.getElementsByClassName('close')[0]
+
+btn.onclick = function (e) {
+  e.preventDefault()
+  modal.style.display = 'block'
+}
+
+span.onclick = function () {
+  modal.style.display = 'none'
+}
+
+window.onclick = function (event) {
+  if (event.target === modal) {
+    modal.style.display = 'none'
+  }
+}
+
+var updateStore = document.getElementById('newData')
+updateStore.onsubmit = function (e) {
+  e.preventDefault()
+  var newStore = new Store(form.storeName.value, form.minCustomer.value, form.maxCustomer.value, form.avgCookie.value)
+  newStore.cookiesNeeded()
+  createStoreInfo(newStore)
+}
