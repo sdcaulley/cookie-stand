@@ -10,30 +10,33 @@
 
   <body>
     <header>
-
+      <img src="images/fishies.jpg" id="one">
       <h1 class="highlight">Salmon Cookie Shops</h1>
-      <nav></nav>
+      <img src="images/fishies.jpg" id="two">
+      <nav>
+        <a href="">Pioneer Square</a>
+        <a href="">Portalnd Airport</a>
+        <a href="">Washington Square</a>
+        <a href="">Sellwood</a>
+        <a href="">Pearl District</a>
+      </nav>
 
     </header>
 
     <div id="content">
     </div>
-
-    <form action="script.js" method="post" id="store">
-      <p>
-        Store Name: <input type="text" name="storeName">
-      </p>
-      <p>
-        Minimum estimated customers: <input type="number" name="minCustomer">
-      </p>
-      <p>
-        Maximum estimated customers: <input type="number" name="maxCustomer">
-      </p>
-      <p>
-        Estimated average cookie sale: <input type="number" name="avgCookie">
-      </p>
-      <input type="submit" name="newStore" value="Create New Store">
-    </form>
+    <aside>
+      <form action="script.js" method="post" id="store">
+        <fieldset>
+          <legend class="highlight">Create a New Store:</legend>
+          Store Name: <input type="text" name="storeName"><br>
+          Minimum estimated customers: <input type="number" name="minCustomer"><br>
+          Maximum estimated customers: <input type="number" name="maxCustomer"><br>
+          Estimated average cookie sale: <input type="number" name="avgCookie"><br>
+          <input type="submit" name="newStore" value="Create New Store">
+        </fieldset>
+      </form>
+    </aside>
   </body>
 
   <script src="script.js" type="text/javascript"></script>
