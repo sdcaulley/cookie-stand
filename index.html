@@ -14,17 +14,37 @@
       <h1 class="highlight">Salmon Cookie Shops</h1>
       <img src="images/fishies.jpg" id="two">
       <nav>
-        <a href="">Pioneer Square</a>
-        <a href="">Portalnd Airport</a>
-        <a href="">Washington Square</a>
-        <a href="">Sellwood</a>
-        <a href="">Pearl District</a>
+        <form>
+          <fieldset>
+            Change Store Data:<br>
+            <select name="storeDrop">
+              <option value="default">Select Store</option>
+              <option value="pioneeSquare">Pioneer Square</option>
+              <option value="portlandAirport">Portland Airport</option>
+              <option value="washingtonSquare">Washington Square</option>
+              <option value="sellwood">Sellwood</option>
+              <option value="pearlDistrict">Pearl District</option>
+            </select>
+          <input type="submit" name="change" value="Choose Store" id="myBtn" />
+      </form>
       </nav>
-
     </header>
 
-    <div id="content">
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">x</span>
+        <form id="newData">
+          Store Name: <input type="text" name="name"><br>
+          Minimum estimated customers: <input type="number" name="minCustomer"><br>
+          Maximum estimated customers: <input type="number" name="maxCustomer"><br>
+          Estimated average cookie sale: <input type="number" name="avgCookie"><br>
+          <input type="submit" name="newStore" value="New Store Data">
+        </form>
+      </div>
     </div>
+
+    <div id="content"></div>
+
     <aside>
       <form action="script.js" method="post" id="store">
         <fieldset>
