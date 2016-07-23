@@ -1,13 +1,55 @@
 body {
-  padding-left: 20px;
-  background-color: rgba(204, 225, 254, 0.2);
   font-family: Verdana, Helvetica, Arial, sans-serif;
   font-size: 1em;
 }
 
+header {
+  text-align: center;
+}
+
+header h1 {
+  display: inline-block;
+  font-size: 48px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+header img {
+  vertical-align: middle;
+  margin: 10px;
+}
+
+aside {
+  width: 20%;
+  float: right;
+}
+
+nav {
+  clear: both;
+  text-align: center;
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
+  padding: 5px;
+  border: 2px solid #2b4365;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: rgba(204, 225, 254, 0.2);
+}
+
+section {
+  width: 40%;
+  float: left;
+  border: 2px solid #2b4365;
+  border-radius: 30px;
+  margin: 10px;
+  background-color: rgba(204, 225, 254, 0.2);
+}
+
 table {
-  border-collapse: collapse;
-  width: 300px;
+  width: 90%;
 }
 
 thead td {
@@ -24,11 +66,30 @@ td {
 }
 
 table, th, td {
-  border: 2px solid #2b4365;
   text-align: center;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 1em;
   margin: 0 auto;
+}
+
+fieldset {
+  width: 45%;
+  float: right;
+  background-color: rgba(204, 225, 254, 0.2);
+  border: 2px solid #2b4365;
+}
+
+input {
+  margin: 10px;
+  border: 2px solid #2b4365;
+}
+
+legend {
+  font-size: 30px;
+}
+
+div {
+  margin: 10px;
 }
 
 .total {
@@ -78,4 +139,17 @@ table, th, td {
   font-family: Georgia, serif;
   color: #f9c756;
   font-weight: bolder;
+}
+
+#content {
+  width: 80%;
+  float: left;
+}
+
+#one {
+  float: left;
+}
+
+#two {
+  float: right;
 }
