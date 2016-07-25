@@ -17,13 +17,13 @@
         <form>
           <fieldset>
             Change Store Data:<br>
-            <select name="storeDrop">
+            <select name="storeDrop" id="storeDrop">
               <option value="default">Select Store</option>
-              <option value="pioneeSquare">Pioneer Square</option>
-              <option value="portlandAirport">Portland Airport</option>
-              <option value="washingtonSquare">Washington Square</option>
-              <option value="sellwood">Sellwood</option>
-              <option value="pearlDistrict">Pearl District</option>
+              <option value="S01">Pioneer Square</option>
+              <option value="S02">Portland Airport</option>
+              <option value="S03">Washington Square</option>
+              <option value="S04">Sellwood</option>
+              <option value="S05">Pearl District</option>
             </select>
           <input type="submit" name="change" value="Choose Store" id="myBtn" />
       </form>
@@ -33,12 +33,13 @@
     <div id="myModal" class="modal">
       <div class="modal-content">
         <span class="close">x</span>
-        <form id="newData">
-          Store Name: <input type="text" name="name"><br>
-          Minimum estimated customers: <input type="number" name="minCustomer"><br>
-          Maximum estimated customers: <input type="number" name="maxCustomer"><br>
-          Estimated average cookie sale: <input type="number" name="avgCookie"><br>
-          <input type="submit" name="newStore" value="New Store Data">
+        <h3 id="modalStoreName"></h3>
+        <form action="script.js" method="post" id="newData">
+          Minimum estimated customers: <input type="number" name="modalMinCustomer"><br>
+          Maximum estimated customers: <input type="number" name="modalMaxCustomer"><br>
+          Estimated average cookie sale: <input type="number" name="modalAvgCookie"><br>
+          <input type="hidden" name="modalCurrentStoreId">
+          <input type="submit" name="newStoreData" value="New Store Data">
         </form>
       </div>
     </div>
@@ -49,6 +50,7 @@
       <form action="script.js" method="post" id="store">
         <fieldset>
           <legend class="highlight">Create a New Store:</legend>
+          Store Id: <input type="text" name="storeId" value="S0#">
           Store Name: <input type="text" name="storeName"><br>
           Minimum estimated customers: <input type="number" name="minCustomer"><br>
           Maximum estimated customers: <input type="number" name="maxCustomer"><br>
