@@ -163,6 +163,9 @@ updateStore.onsubmit = function (e) {
   var newMaxCust = document.getElementById('newData').modalMaxCustomer.value
   var newAvgCookie = document.getElementById('newData').modalAvgCookie.value
   var replaceStore = new Store(newStoreId, newStoreName, newMinCust, newMaxCust, newAvgCookie)
-  var replaceData = replaceStore.cookiesNeeded()
+  var replaceData = function () {
+    replaceStore.cookiesNeeded()
+    createStoreInfo(replaceStore)
+  }
   modal.style.display = 'none'
 }
