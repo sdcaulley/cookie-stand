@@ -1,5 +1,6 @@
 // object constructor for stores
-function Store (name, minCustomer, maxCustomer, avgCookie) {
+function Store (storeId, name, minCustomer, maxCustomer, avgCookie) {
+  this.storeId = storeId
   this.name = name
   this.minCustomer = minCustomer
   this.maxCustomer = maxCustomer
@@ -18,11 +19,11 @@ function Store (name, minCustomer, maxCustomer, avgCookie) {
 
 // declare store objects
 var locations = [
-  new Store('Pioneer Square', 17, 88, 5.2),
-  new Store('Portland Airport', 6, 24, 1.2),
-  new Store('Washington Square', 11, 38, 1.9),
-  new Store('Sellwood', 20, 48, 3.3),
-  new Store('Pearl District', 3, 24, 2.6)
+  new Store('S01', 'Pioneer Square', 17, 88, 5.2),
+  new Store('S02', 'Portland Airport', 6, 24, 1.2),
+  new Store('S03', 'Washington Square', 11, 38, 1.9),
+  new Store('S04', 'Sellwood', 20, 48, 3.3),
+  new Store('S05', 'Pearl District', 3, 24, 2.6)
 ]
 
 // function to display requested data to page
@@ -34,33 +35,48 @@ function displayInfo (locArray) {
 }
 
 function createStoreInfo (locStore) {
+  // create a new section for store table
   var newSec = document.createElement('section')
+  newSec.setAttribute('id', locStore.storeId)
   var position = document.getElementById('content')
   position.appendChild(newSec)
+  // create store name
   var newStore = document.createElement('h2')
   newStore.setAttribute('class', 'highlight')
+  newStore.setAttribute('id', 'name')
   newSec.appendChild(newStore)
   var newStoreName = document.createTextNode(locStore.name)
   newStore.appendChild(newStoreName)
-  var propertyList = document.createElement('ul')
-  var newPropertyMin = document.createElement('li')
-  var newMinCust = document.createTextNode(locStore.minCustomer)
+  // create property display - store id
+  var newPropertyId = document.createElement('p')
+  newPropertyId.setAttribute('id', 'storeId')
+  var newStoreId = document.createTextNode('Store Id: ' + locStore.storeId)
+  newPropertyId.appendChild(newStoreId)
+  newSec.appendChild(newPropertyId)
+  // create property display - minimum customers
+  var newPropertyMin = document.createElement('p')
+  newPropertyMin.setAttribute('id', 'minCust')
+  var newMinCust = document.createTextNode('Minimum Customers: ' + locStore.minCustomer)
   newPropertyMin.appendChild(newMinCust)
-  propertyList.appendChild(newPropertyMin)
-  var newPropertyMax = document.createElement('li')
-  var newMaxCust = document.createTextNode(locStore.maxCustomer)
+  newSec.appendChild(newPropertyMin)
+  //  create property display - maximum cutstomers
+  var newPropertyMax = document.createElement('p')
+  newPropertyMax.setAttribute('id', 'maxCust')
+  var newMaxCust = document.createTextNode('Maximum Customers: ' + locStore.maxCustomer)
   newPropertyMax.appendChild(newMaxCust)
-  propertyList.appendChild(newPropertyMax)
-  var newPropertyAvg = document.createElement('li')
-  var newAvgCookie = document.createTextNode(locStore.avgCookie)
+  newSec.appendChild(newPropertyMax)
+  // create property display - average cookie sales
+  var newPropertyAvg = document.createElement('p')
+  newPropertyAvg.setAttribute('id', 'avgCookie')
+  var newAvgCookie = document.createTextNode('Average Cookies: ' + locStore.avgCookie)
   newPropertyAvg.appendChild(newAvgCookie)
-  propertyList.appendChild(newPropertyAvg)
-  newSec.appendChild(propertyList)
+  newSec.appendChild(newPropertyAvg)
   newSec.appendChild(buildTable(locStore))
 }
 
 function buildTable (locStore) {
   var newTable = document.createElement('table')
+  // create header row, cells and content
   var header = newTable.createTHead()
   var rowHead = header.insertRow(0)
   rowHead.setAttribute('class', 'text')
@@ -70,6 +86,7 @@ function buildTable (locStore) {
   var headText2 = document.createTextNode('Cookies')
   cellHead1.appendChild(headText1)
   cellHead2.appendChild(headText2)
+  // create row and cells for hours and cookies
   for (var index = 0; index < locStore.hours.length; index++) {
     var row = newTable.insertRow(locStore.hours[index])
     newTable.appendChild(row)
@@ -82,6 +99,7 @@ function buildTable (locStore) {
     cell1.appendChild(cellText1)
     cell2.appendChild(cellText2)
   }
+  // create total row and cells
   var rowTotal = newTable.insertRow()
   var cellTotal1 = rowTotal.insertCell(0)
   var cellTotal2 = rowTotal.insertCell(1)
@@ -94,24 +112,36 @@ function buildTable (locStore) {
   return newTable
 }
 
+// new store form
 var form = document.getElementById('store')
 form.onsubmit = function (e) {
   e.preventDefault()
-  var newStore = new Store(form.storeName.value, form.minCustomer.value, form.maxCustomer.value, form.avgCookie.value)
+  var newStore = new Store(form.storeId.value, form.storeName.value, form.minCustomer.value, form.maxCustomer.value, form.avgCookie.value)
   newStore.cookiesNeeded()
   createStoreInfo(newStore)
 }
 
 displayInfo(locations)
 
-// Get the modal
+// Get the modal and populate with store data
 var modal = document.getElementById('myModal')
 var btn = document.getElementById('myBtn')
 var span = document.getElementsByClassName('close')[0]
+var storeDrop = document.getElementById('storeDrop')
 
 btn.onclick = function (e) {
   e.preventDefault()
   modal.style.display = 'block'
+  var index = storeDrop.value
+  for (var i = 0; i < locations.length; i++) {
+    if (index == locations[i].storeId) {
+      document.getElementById('modalStoreName').innerHTML = locations[i].name
+      document.getElementById('newData').modalMinCustomer.value = locations[i].minCustomer
+      document.getElementById('newData').modalMaxCustomer.value = locations[i].maxCustomer
+      document.getElementById('newData').modalAvgCookie.value = locations[i].avgCookie
+      document.getElementById('newData').modalCurrentStoreId.value = index
+    }
+  }
 }
 
 span.onclick = function () {
@@ -127,7 +157,12 @@ window.onclick = function (event) {
 var updateStore = document.getElementById('newData')
 updateStore.onsubmit = function (e) {
   e.preventDefault()
-  var newStore = new Store(form.storeName.value, form.minCustomer.value, form.maxCustomer.value, form.avgCookie.value)
-  newStore.cookiesNeeded()
-  createStoreInfo(newStore)
+  var newStoreId = document.getElementById('newData').modalCurrentStoreId.value
+  var newStoreName = document.getElementById('newData').modalStoreName.value
+  var newMinCust = document.getElementById('newData').modalMinCustomer.value
+  var newMaxCust = document.getElementById('newData').modalMaxCustomer.value
+  var newAvgCookie = document.getElementById('newData').modalAvgCookie.value
+  var replaceStore = new Store(newStoreId, newStoreName, newMinCust, newMaxCust, newAvgCookie)
+  var replaceData = replaceStore.cookiesNeeded()
+  modal.style.display = 'none'
 }
