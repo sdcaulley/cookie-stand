@@ -24,28 +24,22 @@ aside {
   float: right;
 }
 
-nav {
-  clear: both;
+nav fieldset {
   text-align: center;
-  margin: 10px;
-}
-
-a {
-  text-decoration: none;
-  padding: 5px;
-  border: 2px solid #2b4365;
-  border-radius: 10px;
-  margin: 10px;
-  background-color: rgba(204, 225, 254, 0.2);
+  width: 400px;
 }
 
 section {
-  width: 40%;
+  width: 47%;
   float: left;
   border: 2px solid #2b4365;
   border-radius: 30px;
   margin: 10px;
   background-color: rgba(204, 225, 254, 0.2);
+}
+
+p {
+  margin: 10px;
 }
 
 table {
@@ -82,6 +76,7 @@ fieldset {
 input {
   margin: 10px;
   border: 2px solid #2b4365;
+  padding: 5px;
 }
 
 legend {
@@ -174,7 +169,7 @@ div {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
