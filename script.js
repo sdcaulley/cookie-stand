@@ -28,9 +28,10 @@ var locations = [
 
 // function to display requested data to page
 function displayInfo (locArray) {
+  var position = document.getElementById('content')
   for (var i = 0; i < locArray.length; i++) {
     locArray[i].cookiesNeeded()
-    createStoreInfo(locArray[i])
+    position.appendChild(createStoreInfo(locArray[i]))
   }
 }
 
@@ -38,8 +39,6 @@ function createStoreInfo (locStore) {
   // create a new section for store table
   var newSec = document.createElement('section')
   newSec.setAttribute('id', locStore.storeId)
-  var position = document.getElementById('content')
-  position.appendChild(newSec)
   // create store name
   var newStore = document.createElement('h2')
   newStore.setAttribute('class', 'highlight')
@@ -55,23 +54,21 @@ function createStoreInfo (locStore) {
   newSec.appendChild(newPropertyId)
   // create property display - minimum customers
   var newPropertyMin = document.createElement('p')
-  newPropertyMin.setAttribute('id', 'minCust')
   var newMinCust = document.createTextNode('Minimum Customers: ' + locStore.minCustomer)
   newPropertyMin.appendChild(newMinCust)
   newSec.appendChild(newPropertyMin)
   //  create property display - maximum cutstomers
   var newPropertyMax = document.createElement('p')
-  newPropertyMax.setAttribute('id', 'maxCust')
   var newMaxCust = document.createTextNode('Maximum Customers: ' + locStore.maxCustomer)
   newPropertyMax.appendChild(newMaxCust)
   newSec.appendChild(newPropertyMax)
   // create property display - average cookie sales
   var newPropertyAvg = document.createElement('p')
-  newPropertyAvg.setAttribute('id', 'avgCookie')
   var newAvgCookie = document.createTextNode('Average Cookies: ' + locStore.avgCookie)
   newPropertyAvg.appendChild(newAvgCookie)
   newSec.appendChild(newPropertyAvg)
   newSec.appendChild(buildTable(locStore))
+  return newSec
 }
 
 function buildTable (locStore) {
@@ -118,7 +115,8 @@ form.onsubmit = function (e) {
   e.preventDefault()
   var newStore = new Store(form.storeId.value, form.storeName.value, form.minCustomer.value, form.maxCustomer.value, form.avgCookie.value)
   newStore.cookiesNeeded()
-  createStoreInfo(newStore)
+  var position = document.getElementById('content')
+  position.appendChild(createStoreInfo(newStore))
 }
 
 displayInfo(locations)
@@ -157,15 +155,16 @@ window.onclick = function (event) {
 var updateStore = document.getElementById('newData')
 updateStore.onsubmit = function (e) {
   e.preventDefault()
-  var newStoreId = document.getElementById('newData').modalCurrentStoreId.value
-  var newStoreName = document.getElementById('newData').modalStoreName.value
-  var newMinCust = document.getElementById('newData').modalMinCustomer.value
-  var newMaxCust = document.getElementById('newData').modalMaxCustomer.value
-  var newAvgCookie = document.getElementById('newData').modalAvgCookie.value
-  var replaceStore = new Store(newStoreId, newStoreName, newMinCust, newMaxCust, newAvgCookie)
-  var replaceData = function () {
-    replaceStore.cookiesNeeded()
-    createStoreInfo(replaceStore)
-  }
+  var index = document.getElementById('newData').modalCurrentStoreId.value
+  console.log(index)
+  var replaceStoreName = document.getElementById('modalStoreName').innerHTML
+  var replaceMinCustomer = document.getElementById('newData').modalMinCustomer.value
+  var replaceMaxCustomer = document.getElementById('newData').modalMaxCustomer.value
+  var replaceAvgCookie = document.getElementById('newData').modalAvgCookie.value
+  var replaceStore = new Store(index, replaceStoreName, replaceMinCustomer, replaceMaxCustomer, replaceAvgCookie)
+  replaceStore.cookiesNeeded()
+  var position = document.getElementById('content')
+  console.log(position)
+  position.replaceChild(createStoreInfo(replaceStore), document.getElementById(index))
   modal.style.display = 'none'
 }
